@@ -24,13 +24,12 @@ Buatlah sebuah Aplikasi yang akan menampilkan data vital sign seperti berikut:
 - Method : `GET`
 - Header:
   - Params:
-    - `member_id`
-    - `all`
-    - `type`
-    - `member_id`
-    - `latest`
-    - `from`
-    - `to`
+    - `member_id:String`
+    - `all:Boolean= true`
+    - `latest:Boolean = true`
+    - `type:Integer = 1`
+    - `from:Long(Timestamp)`
+    - `to:Long(Timestamp)`
   - Content-Type: `application/json`
   - Accept: `application/json`
   - X-Api-Key: `<YOUR_API_KEY>`
