@@ -7,8 +7,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import compose.icons.Octicons
-import compose.icons.octicons.ArrowLeft24
 
 /**
  * Base Application
@@ -20,7 +18,7 @@ import compose.icons.octicons.ArrowLeft24
 fun AppBarDetailTransaction(onBackPressed:()->Unit) {
     TopAppBar(
       navigationIcon = {
-        Icon(imageVector = Octicons.ArrowLeft24, contentDescription = "Back")
+
       },
       title = {
           Column(horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
