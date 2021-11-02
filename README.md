@@ -4,7 +4,7 @@
 Buatlah sebuah Aplikasi yang akan menampilkan data vital sign seperti berikut:
 
 
-###Tata cara
+### Tata cara
 
 - [ ] Silahkan fork projek Ini ke github anda 
 - [ ] Gunakan module yang sudah tersedia untuk membuat aplikasi
@@ -12,7 +12,7 @@ Buatlah sebuah Aplikasi yang akan menampilkan data vital sign seperti berikut:
 
 
 ***
-###Ketentuan:
+### Ketentuan:
 
 1. Data dapat diampilkan  walaupun android/device sedang offline
 2. Menggunakan salah satu design pattern seperti `mvp`,`mvvm` etc jika memungkinkan
