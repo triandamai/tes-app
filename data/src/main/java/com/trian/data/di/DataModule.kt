@@ -21,7 +21,7 @@ import dagger.hilt.components.SingletonComponent
  * 22/10/2021
  */
 @Module
-@InstallIn(SingletonComponent::class, ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 object DataModule {
     @Provides
     internal fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
@@ -30,6 +30,5 @@ object DataModule {
     internal fun provideSharePreferences(@ApplicationContext appContext: Context): SharedPreferences {
         return appContext.getSharedPreferences("fcab4de", Context.MODE_PRIVATE)
     }
-
 
 }

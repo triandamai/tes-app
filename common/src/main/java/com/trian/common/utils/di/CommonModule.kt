@@ -18,12 +18,10 @@ import dagger.hilt.components.SingletonComponent
  **/
 
 @Module
-@InstallIn(SingletonComponent::class,ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 object CommonModule {
     @Provides
     fun provideGson():Gson{
         return Gson()
     }
-
-
 }

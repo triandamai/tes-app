@@ -1,8 +1,7 @@
 package com.trian.cexup
 
 import android.app.Application
-import androidx.hilt.work.HiltWorkerFactory
-import androidx.work.Configuration
+
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
@@ -13,17 +12,4 @@ import javax.inject.Inject
  * 28/08/2021
  */
 @HiltAndroidApp
-class MainApplication : Application(),Configuration.Provider{
-
-    @Inject lateinit var workerFactory: HiltWorkerFactory
-    override fun onCreate() {
-        super.onCreate()
-
-    }
-
-    override fun getWorkManagerConfiguration(): Configuration=
-        Configuration.Builder()
-            .setWorkerFactory(workerFactory)
-            .build()
-}
-
+class MainApplication : Application()
