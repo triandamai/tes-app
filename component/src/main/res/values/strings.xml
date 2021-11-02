@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="datadummyarticledate">17 days ago</string>
+    <string name="datadummyarticletitle">MEDIA</string>
+    <string name="datadummyarticlecaption">SMM starter pack, part 2: content promotion</string>
+    <string name="datadummyarticlesubcaption">This is the second part of the SMM starter pack series of articles. If you made it this far, you must be willing to learn about promoting business through social media.</string>
+    <string name="datadummyarticlename">Admin</string>
+    <string name="datadummyarticlereadmore">Read More</string>
+    <string name="dummyarticletitle">PRODUCTIVITY</string>
+    <string name="datadummycategory">Kandungan</string>
+    <string name="datadummynamedoctor">Dr. Yakob Simatupang</string>
+
+
+</resources>
