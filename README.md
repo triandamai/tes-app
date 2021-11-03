@@ -3,6 +3,8 @@
 
 Buatlah sebuah Aplikasi yang akan menampilkan data vital sign seperti berikut:
 
+<img src="/showcase/preview.gif" width="200" height="500" />
+
 
 ### Tata cara
 
