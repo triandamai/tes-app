@@ -4,13 +4,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun Header (){
-    Column (modifier= Modifier.fillMaxWidth()
-    .padding(start = 16.dp,end = 16.dp)){
+    Column (modifier= Modifier
+        .fillMaxWidth()
+        .padding(start = 16.dp, end = 16.dp)){
     Text(
         text = "March 9,2020",
         modifier = Modifier
@@ -27,6 +29,12 @@ fun Header (){
         fontSize = 14.sp,)
 }
 
+}
+
+@Preview
+@Composable
+fun PreviewHeader(){
+    Header()
 }
 
 
