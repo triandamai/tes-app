@@ -7,6 +7,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +42,13 @@ fun Incompletetodo() {
                 colors = CheckboxDefaults.colors(Color.Black)
             )
             Column {
-                Text(text = "Upload 1099-R to TurboMax", fontSize = 18.sp)
+                Text(
+                    text = "Upload 1099-R to TurboMax",
+                    fontSize = 18.sp,
+                    style = if (checkedStateBox) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle(
+                        textDecoration = TextDecoration.None
+                    )
+                )
                 Text(text = "💰 Finance", fontSize = 14.sp, color = Color.Gray)
             }
 
@@ -56,7 +64,13 @@ fun Incompletetodo() {
             )
 
             Column {
-                Text(text = "Submit 2019 tax return", fontSize = 18.sp)
+                Text(
+                    text = "Submit 2019 tax return",
+                    fontSize = 18.sp,
+                    style = if (checkedStateBox2) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle(
+                        textDecoration = TextDecoration.None
+                    )
+                )
                 Text(text = "💰 Finance", fontSize = 14.sp, color = Color.Gray)
             }
         }
@@ -69,7 +83,13 @@ fun Incompletetodo() {
                 colors = CheckboxDefaults.colors(Color.Black)
             )
             Column {
-                Text(text = "Print parking passes", fontSize = 18.sp)
+                Text(
+                    text = "Print parking passes",
+                    fontSize = 18.sp,
+                    style = if (checkedStateBox3) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle(
+                        textDecoration = TextDecoration.None
+                    )
+                )
                 Text(text = "💖 Wedding", fontSize = 14.sp, color = Color.Gray)
             }
         }
@@ -83,7 +103,13 @@ fun Incompletetodo() {
             )
 
             Column {
-                Text(text = "Sign contract, send back", fontSize = 18.sp)
+                Text(
+                    text = "Sign contract, send back",
+                    fontSize = 18.sp,
+                    style = if (checkedStateBox4) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle(
+                        textDecoration = TextDecoration.None
+                    )
+                )
                 Text(text = "🖥️ Freelance", fontSize = 14.sp, color = Color.Gray)
             }
         }
@@ -97,12 +123,19 @@ fun Incompletetodo() {
             )
 
             Column {
-                Text(text = "Hand sanitizer", fontSize = 18.sp)
+                Text(
+                    text = "Hand sanitizer",
+                    fontSize = 18.sp,
+                    style = if (checkedStateBox5) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle(
+                        textDecoration = TextDecoration.None
+                    )
+                )
                 Text(text = "🛒 Shopping List", fontSize = 14.sp, color = Color.Gray)
             }
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
