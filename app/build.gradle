@@ -2,6 +2,7 @@ import com.trian.dependecies.*
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
 }
 
 apply from: '../commons.gradle'
@@ -32,6 +33,9 @@ dependencies {
 
     implementation Libs.AndroidX.Room.ktx
     implementation Libs.AndroidX.Room.runtime
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     kapt Libs.AndroidX.Room.Compiler
     annotationProcessor Libs.AndroidX.Room.Compiler
 

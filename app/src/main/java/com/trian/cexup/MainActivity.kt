@@ -15,6 +15,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import com.google.accompanist.insets.ExperimentalAnimatedInsets
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.trian.component.Completecheckbox
 import com.trian.component.card.ItemTodo
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,6 +55,7 @@ class MainActivity : ComponentActivity() {
             }
 
             TesMultiModuleTheme {
+                Completecheckbox()
             }
         }
     }
