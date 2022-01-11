@@ -3,16 +3,19 @@ package com.trian.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.trian.component.ui.theme.background
 
 @Composable
 fun Newgoal() {
@@ -116,7 +119,7 @@ fun Page(){
         NavigationItem.Home,
     )
 
-    Scaffold(topBar = {
+    Scaffold(topBar =  {
         Row {
         Text(
             text = "New goal",
@@ -156,7 +159,7 @@ fun Page(){
     },
     bottomBar = {
         BottomNavigation(
-        backgroundColor =Color.Blue,
+        backgroundColor = Color.LightGray,
         contentColor = Color.White
     ) {
         items.forEach { item ->
@@ -179,28 +182,28 @@ fun Page(){
     ) {
         Column() {
             Spacer(
-                modifier = Modifier.height(100.dp))
+                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
             TextField(
                 value = text1,
                 onValueChange = { text1 = it },
                 label = { Text("Goal title") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp))
+                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
             TextField(
                 value = text2,
                 onValueChange = { text2 = it },
                 label = { Text("Goal Description") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp))
+                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
             TextField(
                 value = text3,
                 onValueChange = { text3 = it },
                 label = { Text("Reminder") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp))
+                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
             TextField(
                 value = text4,
                 onValueChange = { text4 = it },
@@ -211,7 +214,7 @@ fun Page(){
                 modifier= Modifier,fontSize = 24.sp)
             Spacer(
                 modifier = Modifier.height(1.dp))
-            Row(modifier=Modifier.background(Color.LightGray)) {
+            Row(modifier=Modifier.background(background)) {
                 Image(painter = painterResource(id = R.drawable.back), contentDescription = null, modifier= Modifier.size(45.dp))
                 Column {
                     Text(text = "Water Consumption")
@@ -221,10 +224,10 @@ fun Page(){
 
             }
 
-            Row(modifier=Modifier.background(Color.LightGray)) {
+            Row(modifier=Modifier.background(background)) {
                 Image(painter = painterResource(id = R.drawable.icon), contentDescription =null, modifier= Modifier
                     .size(20.dp)
-                    .background(Color.LightGray))
+                    .background(background))
                 Text(text = "Deadline")
                 Text(text = "1 January 2023")
             }
