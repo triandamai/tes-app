@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Newgoal2() {
+fun Newgoal() {
     var text1 by remember { mutableStateOf("Water consumption") }
     var text2 by remember { mutableStateOf("Drink 5 cup water") }
     var text3 by remember { mutableStateOf("Every Day") }
@@ -107,7 +107,7 @@ fun Newgoal2() {
 }
 
 @Composable
-fun page(){
+fun Page(){
     var text1 by remember { mutableStateOf("Water consumption") }
     var text2 by remember { mutableStateOf("Drink 5 cup water") }
     var text3 by remember { mutableStateOf("Every Day") }
@@ -251,8 +251,8 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
 
         @Preview(showBackground = true)
         @Composable
-        fun Previewpage() {
-           page                           ()
+        fun PreviePage() {
+           Page                           ()
 
         }
 
