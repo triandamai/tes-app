@@ -86,7 +86,7 @@ fun Newgoal() {
             modifier= Modifier,fontSize = 24.sp)
 
         Row(modifier=Modifier.background(Color.LightGray)) {
-            Image(painter = painterResource(id =R.drawable.heart_plus), contentDescription = null, modifier= Modifier.size(45.dp))
+            Image(painter = painterResource(id = R.drawable.back), contentDescription = null, modifier= Modifier.size(45.dp))
             Column {
                 Text(text = "Water Consumption")
                 Text(text = "Drink 5 cup water")
@@ -212,7 +212,7 @@ fun Page(){
             Spacer(
                 modifier = Modifier.height(1.dp))
             Row(modifier=Modifier.background(Color.LightGray)) {
-                Image(painter = painterResource(id =R.drawable.heart_plus), contentDescription = null, modifier= Modifier.size(45.dp))
+                Image(painter = painterResource(id = R.drawable.back), contentDescription = null, modifier= Modifier.size(45.dp))
                 Column {
                     Text(text = "Water Consumption")
                     Text(text = "Drink 5 cup water")
@@ -222,7 +222,7 @@ fun Page(){
             }
 
             Row(modifier=Modifier.background(Color.LightGray)) {
-                Image(painter = painterResource(id =R.drawable.icon), contentDescription =null, modifier= Modifier
+                Image(painter = painterResource(id = R.drawable.icon), contentDescription =null, modifier= Modifier
                     .size(20.dp)
                     .background(Color.LightGray))
                 Text(text = "Deadline")
@@ -233,7 +233,7 @@ fun Page(){
 }
 
 sealed class NavigationItem(var route: String, var icon: Int, var title: String) {
-    object Home : NavigationItem("home", R.drawable.icon, "Home")
+    object Home : NavigationItem("home",R.drawable.check, "Home")
 }
 
 
