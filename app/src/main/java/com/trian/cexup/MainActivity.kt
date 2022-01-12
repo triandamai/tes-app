@@ -16,8 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ExperimentalAnimatedInsets
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.trian.component.HomeScreen
-import com.trian.component.PageNewgoal
+import com.trian.component.navigation.HomeScreen
 import com.trian.component.navigation.PageNewgoal
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,7 +49,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = "homescreen" ){
                 composable("homescreen"){
-                    HomeScreen()
+                    HomeScreen(navController= navController)
                 }
                 composable("pagenewgoal"){
                     PageNewgoal(navController = navController)
