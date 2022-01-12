@@ -15,6 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.trian.component.ui.theme.background
 
 @Composable
@@ -110,7 +113,7 @@ fun Newgoal() {
 }
 
 @Composable
-fun Page(){
+fun Page(navController: NavController){
     var text1 by remember { mutableStateOf("Water consumption") }
     var text2 by remember { mutableStateOf("Drink 5 cup water") }
     var text3 by remember { mutableStateOf("Every Day") }
@@ -118,6 +121,7 @@ fun Page(){
     val items = listOf(
         NavigationItem.Home,
     )
+
 
     Scaffold(topBar =  {
         Row {
@@ -182,28 +186,40 @@ fun Page(){
     ) {
         Column() {
             Spacer(
-                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
+                modifier = Modifier
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .fillMaxWidth())
             TextField(
                 value = text1,
                 onValueChange = { text1 = it },
                 label = { Text("Goal title") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
+                modifier = Modifier
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .fillMaxWidth())
             TextField(
                 value = text2,
                 onValueChange = { text2 = it },
                 label = { Text("Goal Description") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
+                modifier = Modifier
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .fillMaxWidth())
             TextField(
                 value = text3,
                 onValueChange = { text3 = it },
                 label = { Text("Reminder") }
             )
             Spacer(
-                modifier = Modifier.height(100.dp).clip(RoundedCornerShape(10.dp)).fillMaxWidth())
+                modifier = Modifier
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .fillMaxWidth())
             TextField(
                 value = text4,
                 onValueChange = { text4 = it },

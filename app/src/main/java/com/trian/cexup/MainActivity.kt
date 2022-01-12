@@ -45,19 +45,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            LaunchedEffect(Unit) {
-
-
-            }
-
-            SideEffect {
-
-            }
-
-            TesMultiModuleTheme {
-                Completecheckbox()
-            }
         }
     }
 }
+
 

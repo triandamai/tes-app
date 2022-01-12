@@ -36,6 +36,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation "androidx.navigation:navigation-compose:2.4.0-rc01"
     kapt Libs.AndroidX.Room.Compiler
     annotationProcessor Libs.AndroidX.Room.Compiler
 
@@ -66,5 +67,6 @@ dependencies {
     implementation Libs.AndroidX.Compose.Accompanist.NavigationMaterial
     implementation Libs.AndroidX.Compose.Accompanist.Inset
     implementation Libs.AndroidX.Compose.MarkDown
+
 }
 
