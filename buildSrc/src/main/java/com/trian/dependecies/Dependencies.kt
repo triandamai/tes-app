@@ -56,7 +56,7 @@ object Libs{
     }
     object GradlePlugin{
         const val  androidGradlePlugin = "com.android.tools.build:gradle:7.0.1"
-        const val gms = "com.google.gms:google-services:4.3.10"
+
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
         const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltGradlePluginVersion}"
     }
