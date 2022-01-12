@@ -18,6 +18,7 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.trian.component.HomeScreen
 import com.trian.component.PageNewgoal
+import com.trian.component.navigation.PageNewgoal
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,7 +52,7 @@ class MainActivity : ComponentActivity() {
                 composable("homescreen"){
                     HomeScreen()
                 }
-                composable("newgoal2"){
+                composable("pagenewgoal"){
                     PageNewgoal(navController = navController)
                 }
             }
