@@ -31,3 +31,6 @@ val GreenDark = Color(0xFF2A8C00)
 val BlueOpacity= Color(0x6618A0FB)
 val BlackOpacity= Color(0x4DD8D2D2)
 val RedOpacity = Color(0x61F44336)
+
+val background=Color(0xFFE0E0E0)
+
