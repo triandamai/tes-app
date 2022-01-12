@@ -9,14 +9,15 @@ import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ExperimentalAnimatedInsets
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.trian.component.Completecheckbox
-import com.trian.component.card.ItemTodo
+import com.trian.component.HomeScreen
+import com.trian.component.PageNewgoal
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +45,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+        TesMultiModuleTheme {
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = "homescreen" ){
+                composable("homescreen"){
+                    HomeScreen()
+                }
+                composable("newgoal2"){
+                    PageNewgoal(navController = navController)
+                }
+            }
+        }
         }
     }
 }

@@ -18,102 +18,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.trian.component.ui.theme.TesMultiModuleTheme
 import com.trian.component.ui.theme.background
 
-@Composable
-fun Newgoal() {
-    var text1 by remember { mutableStateOf("Water consumption") }
-    var text2 by remember { mutableStateOf("Drink 5 cup water") }
-    var text3 by remember { mutableStateOf("Every Day") }
-    var text4 by remember { mutableStateOf("12 Months") }
-
-    Column {
-        Row {
-            Text(
-                text = "New goal",
-                modifier = Modifier
-                    .height(35.dp)
-                    .width(116.dp),
-                fontSize = 24.sp
-            )
-            Spacer(
-                modifier = Modifier
-                    .width(100.dp)
-
-            )
-            Button(
-                onClick = { /* ... */ },
-                // Uses ButtonDefaults.ContentPadding by default
-                contentPadding = PaddingValues(
-                    start = 20.dp,
-                    top = 12.dp,
-                    end = 20.dp,
-                    bottom = 12.dp
-                )
-
-            ) {
-                // Inner content including an icon and a text label
-                Icon(
-                    Icons.Filled.Close,
-                    contentDescription = "",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
-
-                )
-
-
-            }
-        }
-        TextField(
-            value = text1,
-            onValueChange = { text1 = it },
-            label = { Text("Goal title") }
-        )
-        Spacer(
-            modifier = Modifier.height(30.dp))
-        TextField(
-            value = text2,
-            onValueChange = { text2 = it },
-            label = { Text("Goal Description") }
-        )
-        Spacer(
-            modifier = Modifier.height(30.dp))
-        TextField(
-            value = text3,
-            onValueChange = { text3 = it },
-            label = { Text("Reminder") }
-        )
-        Spacer(
-            modifier = Modifier.height(30.dp))
-        TextField(
-            value = text4,
-            onValueChange = { text4 = it },
-            label = { Text("Maturity date") })
-        Text(text = "Goal Preview",
-            modifier= Modifier,fontSize = 24.sp)
-
-        Row(modifier=Modifier.background(Color.LightGray)) {
-            Image(painter = painterResource(id = R.drawable.back), contentDescription = null, modifier= Modifier.size(45.dp))
-            Column {
-                Text(text = "Water Consumption")
-                Text(text = "Drink 5 cup water")
-        }
-
-
-    }
-
-    Row(modifier=Modifier.background(Color.LightGray)) {
-        Image(painter = painterResource(id =R.drawable.icon), contentDescription =null, modifier= Modifier
-            .size(20.dp)
-            .background(Color.LightGray))
-        Text(text = "Deadline")
-        Text(text = "1 January 2023")
-    }
-
-    }
-}
 
 @Composable
-fun Page(navController: NavController){
+fun PageNewgoal(navController: NavController){
     var text1 by remember { mutableStateOf("Water consumption") }
     var text2 by remember { mutableStateOf("Drink 5 cup water") }
     var text3 by remember { mutableStateOf("Every Day") }
@@ -257,21 +167,12 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         @Preview(showBackground = true)
         @Composable
         fun PreviePage() {
-           Page                           ()
+           TesMultiModuleTheme {
+               PageNewgoal(navController = rememberNavController())
+           }
 
         }
 
