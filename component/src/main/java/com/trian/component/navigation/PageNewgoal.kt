@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -48,7 +49,7 @@ fun PageNewgoal(navController: NavController){
 
         )
         Button(
-            onClick = { /* ... */ },
+            onClick = {navController.navigate("homescreen")},
             // Uses ButtonDefaults.ContentPadding by default
             contentPadding = PaddingValues(
                 start = 20.dp,
@@ -57,10 +58,11 @@ fun PageNewgoal(navController: NavController){
                 bottom = 12.dp
             )
 
+
         ) {
             // Inner content including an icon and a text label
             Icon(
-                Icons.Filled.Close,
+                Icons.Filled.ArrowBack,
                 contentDescription = "",
                 modifier = Modifier.size(ButtonDefaults.IconSize)
 
