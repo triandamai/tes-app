@@ -1,4 +1,4 @@
-package com.trian.component
+package com.trian.component.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowRight
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.Composable
@@ -16,14 +17,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.trian.component.R
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Scaffold(topBar = {
         Row {
             Button(onClick = { /*....*/ }) {
                 Image(
-                    painter = painterResource(R.drawable.icon),
+                    painter = painterResource(R.drawable.icon_box),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp)
                 )
@@ -38,13 +42,16 @@ fun HomeScreen() {
                 modifier = Modifier.padding(0.dp, 10.dp)
             )
 
-            Spacer(modifier = Modifier.width(55.dp))
+            Spacer(modifier = Modifier.width(35.dp))
 
-            Image(
-                painter = painterResource(R.drawable._134009),
-                contentDescription = null,
-                modifier = Modifier.size(60.dp)
-            )
+            Button(onClick = {navController.navigate("pagenewgoal") }) {
+                Icon(
+                    Icons.Filled.ArrowRight,
+                    contentDescription = null,
+                    modifier = Modifier.size(40.dp)
+                )
+            }
+
         }
 
 
@@ -234,6 +241,7 @@ fun Health() {
 @Composable
 fun DefaultPreview() {
 
-    HomeScreen()
+    HomeScreen(navController = rememberNavController())
+
 
 }
