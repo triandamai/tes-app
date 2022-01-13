@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = "homescreen" ){
                 composable("homescreen"){
-                    HomeScreen(navController = navController)
+                    HomeScreen(navController= navController)
                 }
                 composable("pagenewgoal"){
                     PageNewgoal(navController = navController)
