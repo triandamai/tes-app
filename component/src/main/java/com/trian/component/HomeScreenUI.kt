@@ -9,7 +9,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,7 +21,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HomeScreenUI() {
     var search by remember {
-        mutableStateOf("Search Store")
+        mutableStateOf("")
     }
     val items = listOf(
         NavigationItem.Shop,
@@ -31,8 +33,8 @@ fun HomeScreenUI() {
     )
     Scaffold(bottomBar = {
         BottomNavigation(
-            backgroundColor = Color.Black,
-            contentColor = Color.Black
+            backgroundColor = Black,
+            contentColor = Black
         ) {
             items.forEach { item ->
                 BottomNavigationItem(icon = {
@@ -89,17 +91,16 @@ fun HomeScreenUI() {
                 TextField(
                     value = search,
                     onValueChange = { search = it },
+                    label = {Text("Search Store")},
                     leadingIcon = {
                         Image(
                             painter = painterResource(id = R.drawable.magnifier),
                             contentDescription = null,
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(15.dp)
                         )
 
                     },
-                    colors = TextFieldDefaults.textFieldColors(
-                        Color.Black
-                    ),
+                    textStyle = TextStyle(color = Black),
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(15.dp))
@@ -140,7 +141,7 @@ fun HomeScreenUI() {
                     modifier = Modifier
                         .clip(RoundedCornerShape(15.dp))
                         .border(
-                            border = BorderStroke(3.dp, Color.Black),
+                            border = BorderStroke(3.dp, Black),
                             shape = RoundedCornerShape(15.dp)
                         )
                         .background(Color.Transparent)
@@ -197,7 +198,7 @@ fun HomeScreenUI() {
 
                         .clip(RoundedCornerShape(15.dp))
                         .border(
-                            border = BorderStroke(3.dp, Color.Black),
+                            border = BorderStroke(3.dp, Black),
                             shape = RoundedCornerShape(15.dp)
                         )
                         .background(Color.Transparent)
@@ -265,7 +266,7 @@ fun HomeScreenUI() {
                     modifier = Modifier
                         .clip(RoundedCornerShape(15.dp))
                         .border(
-                            border = BorderStroke(3.dp, Color.Black),
+                            border = BorderStroke(3.dp, Black),
                             shape = RoundedCornerShape(15.dp)
                         )
                         .background(Color.Transparent)
@@ -322,7 +323,7 @@ fun HomeScreenUI() {
 
                         .clip(RoundedCornerShape(15.dp))
                         .border(
-                            border = BorderStroke(3.dp, Color.Black),
+                            border = BorderStroke(3.dp, Black),
                             shape = RoundedCornerShape(15.dp)
                         )
                         .background(Color.Transparent)
