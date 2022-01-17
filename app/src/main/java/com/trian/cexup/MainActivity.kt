@@ -16,6 +16,8 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ExperimentalAnimatedInsets
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.trian.component.Explore
+import com.trian.component.Login
 import com.trian.component.navigation.HomeScreen
 import com.trian.component.navigation.PageNewgoal
 import com.trian.component.ui.theme.TesMultiModuleTheme
@@ -45,17 +47,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-        TesMultiModuleTheme {
-            val navController = rememberNavController()
-            NavHost(navController = navController, startDestination = "homescreen" ){
-                composable("homescreen"){
-                    HomeScreen(navController= navController)
-                }
-                composable("pagenewgoal"){
-                    PageNewgoal(navController = navController)
+            TesMultiModuleTheme {
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "login" ){
+                    composable("login"){
+                        Login(navController= navController)
+                    }
+                    composable("Explore"){
+                        Explore(navController = navController)
+                    }
+
                 }
             }
-        }
         }
     }
 }

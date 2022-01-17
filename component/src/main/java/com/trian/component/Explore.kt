@@ -16,13 +16,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import com.trian.component.ui.theme.*
 
 @Composable
-fun Explore() {
+fun Explore(navController: NavController) {
     var value by remember { mutableStateOf("") }
     val items = listOf(
-    NavigationItem.Home,
+        NavigationItem.Home,
     )
     Scaffold(
         bottomBar = {
@@ -82,7 +85,10 @@ fun Explore() {
                 Column(
                     modifier = Modifier
                         .clip(RoundedCornerShape(15.dp))
-                        .border(border=BorderStroke(3.dp, Limegreen), shape = RoundedCornerShape(15.dp))
+                        .border(
+                            border = BorderStroke(3.dp, Limegreen),
+                            shape = RoundedCornerShape(15.dp)
+                        )
                         .background(Limegreen.copy(alpha = 0.5f))
                         .clickable {
 
@@ -100,7 +106,10 @@ fun Explore() {
                 Column(
                     modifier = Modifier
                         .clip(RoundedCornerShape(15.dp))
-                        .border(border=BorderStroke(3.dp, Cyanorange), shape = RoundedCornerShape(15.dp))
+                        .border(
+                            border = BorderStroke(3.dp, Cyanorange),
+                            shape = RoundedCornerShape(15.dp)
+                        )
                         .background(Cyanorange.copy(alpha = 0.5f))
                         .clickable {
 
@@ -120,7 +129,10 @@ fun Explore() {
             Row() {
                 Column(modifier = Modifier
                     .clip(RoundedCornerShape(15.dp))
-                    .border(border=BorderStroke(3.dp, Lightorange), shape = RoundedCornerShape(15.dp))
+                    .border(
+                        border = BorderStroke(3.dp, Lightorange),
+                        shape = RoundedCornerShape(15.dp)
+                    )
                     .background(Lightorange.copy(alpha = 0.5f))
                     .clickable {
 
@@ -137,7 +149,10 @@ fun Explore() {
                 Spacer(modifier = Modifier.width(84.dp))
                 Column(modifier = Modifier
                     .clip(RoundedCornerShape(15.dp))
-                    .border(border=BorderStroke(3.dp, Lightpurple), shape = RoundedCornerShape(15.dp))
+                    .border(
+                        border = BorderStroke(3.dp, Lightpurple),
+                        shape = RoundedCornerShape(15.dp)
+                    )
                     .background(Lightpurple.copy(alpha = 0.5f))
                     .clickable {
 
@@ -156,7 +171,10 @@ fun Explore() {
             Row() {
                 Column(modifier = Modifier
                     .clip(RoundedCornerShape(15.dp))
-                    .border(border=BorderStroke(3.dp, Lightyellow), shape = RoundedCornerShape(15.dp))
+                    .border(
+                        border = BorderStroke(3.dp, Lightyellow),
+                        shape = RoundedCornerShape(15.dp)
+                    )
                     .background(Lightyellow.copy(alpha = 0.5f))
                     .clickable {
 
@@ -173,7 +191,10 @@ fun Explore() {
                 Spacer(modifier = Modifier.width(84.dp))
                 Column(modifier = Modifier
                     .clip(RoundedCornerShape(15.dp))
-                    .border(border=BorderStroke(3.dp, Lightblue), shape = RoundedCornerShape(15.dp))
+                    .border(
+                        border = BorderStroke(3.dp, Lightblue),
+                        shape = RoundedCornerShape(15.dp)
+                    )
                     .background(Lightblue.copy(alpha = 0.5f))
                     .clickable {
 
@@ -193,11 +214,9 @@ fun Explore() {
         }
     }
 }
-sealed class NavigationItem(var route: String, var icon: Int, var title: String) {
-    object Home : NavigationItem("home",R.drawable.check, "Home")
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewExplore() {
+    Explore(navController = rememberNavController())
 }
-    @Preview(showBackground = true)
-    @Composable
-    fun PreviewExplore() {
-        Explore()
-    }
