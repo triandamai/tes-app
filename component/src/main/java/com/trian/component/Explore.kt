@@ -22,7 +22,7 @@ import com.trian.component.ui.theme.*
 fun Explore() {
     var value by remember { mutableStateOf("") }
     val items = listOf(
-    NavigationItem.Home,
+        NavigationItem.Home,
     )
     Scaffold(
         bottomBar = {
@@ -193,11 +193,9 @@ fun Explore() {
         }
     }
 }
-sealed class NavigationItem(var route: String, var icon: Int, var title: String) {
-    object Home : NavigationItem("home",R.drawable.check, "Home")
+1
+@Preview(showBackground = true)
+@Composable
+fun PreviewExplore() {
+    Explore()
 }
-    @Preview(showBackground = true)
-    @Composable
-    fun PreviewExplore() {
-        Explore()
-    }

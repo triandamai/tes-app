@@ -108,7 +108,7 @@ fun Login(navController: NavController) {
 
                 Row( verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Don't have account?")
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = {navController.navigate("Explore") }) {
                         Text(text = "SignUp", color= Color.Green)
                 }
                 }
