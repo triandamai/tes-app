@@ -105,7 +105,7 @@ fun Signup(navController: NavController) {
                         Icon(
                             painter = painterResource(id = R.drawable.eye),
                             contentDescription = null,
-                            tint = if (passwordVisibility.value) Color.Green else Color.Gray,
+                            tint = if (passwordVisibility.value) Color.Blue else Color.Gray,
                             modifier = Modifier.size(20.dp)
                         )
 
