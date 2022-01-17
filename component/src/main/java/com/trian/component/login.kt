@@ -25,8 +25,18 @@ import com.trian.component.ui.theme.TesMultiModuleTheme
 
 @Composable
 fun Login(navController: NavController) {
-    var value by remember { mutableStateOf("imsimsimsi@gmail.com") }
-    var password by rememberSaveable { mutableStateOf("hallo bang") }
+    var email by remember { mutableStateOf("imsimsimsi@gmail.com") }
+    var password by rememberSaveable { mutableStateOf("admin") }
+
+    fun checklogin() {
+       if (email == "admin@gmail.com" && password == "admin" ){
+           navController.navigate("Explore")
+       }else{
+
+       }
+    }
+
+
 
 
     Scaffold(
@@ -53,9 +63,10 @@ fun Login(navController: NavController) {
             Column() {
                 Spacer(modifier = Modifier.height(40.dp))
                 TextField(
-                    value = value,
+                    value = email,
                     colors =TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
-                    onValueChange = { value = it },
+                    placeholder = { Text(text = "user@email.com") },
+                    onValueChange = { email = it },
                     label = { Text("Gmail") },
                     maxLines = 2,
                     textStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
@@ -101,7 +112,9 @@ fun Login(navController: NavController) {
             }
             Spacer(modifier = Modifier.height(80.dp))
             Column( horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(onClick = {}, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = {
+                    checklogin()
+                }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green), modifier = Modifier.fillMaxWidth()) {
                     Text(text = "login", color = Color.White)
                     
                 }
