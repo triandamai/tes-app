@@ -18,8 +18,6 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.trian.component.Explore
 import com.trian.component.Login
-import com.trian.component.navigation.HomeScreen
-import com.trian.component.navigation.PageNewgoal
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,7 +52,7 @@ class MainActivity : ComponentActivity() {
                         Login(navController= navController)
                     }
                     composable("Explore"){
-                        Explore(navController = navController)
+                        Explore()
                     }
 
                 }
