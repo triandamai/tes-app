@@ -39,7 +39,7 @@ fun Signup(navController: NavController) {
     }
     val passwordVisibility = remember { mutableStateOf(false) }
     fun check() {
-        if (username != "" && email != "@" && password != "") {
+        if (username != "" && email != "" && password != "") {
             navController.navigate("HomeScreenUI")
         }
     }

@@ -2,6 +2,8 @@ package com.trian.component
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -10,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +35,7 @@ fun HomeScreenUI() {
         NavigationItem.Account
 
     )
+
     Scaffold(bottomBar = {
         BottomNavigation(
             backgroundColor = Black,
@@ -70,7 +75,7 @@ fun HomeScreenUI() {
                 Image(
                     painter = painterResource(id = R.drawable.carrot),
                     contentDescription = null,
-                    modifier = Modifier.size(30.dp)
+                    modifier = Modifier.size(40.dp)
                 )
 
                 Row {
@@ -91,7 +96,7 @@ fun HomeScreenUI() {
                 TextField(
                     value = search,
                     onValueChange = { search = it },
-                    label = {Text("Search Store")},
+                    label = { Text("Search Store") },
                     leadingIcon = {
                         Image(
                             painter = painterResource(id = R.drawable.magnifier),
@@ -136,53 +141,53 @@ fun HomeScreenUI() {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            Row {
-                Column(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Black),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Color.Transparent)
-                        .clickable {}
-                        .width(170.dp)) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxSize()
+
+            ) {
+                items(dataExlusiveOffer) { item ->
+                    Card(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .border(BorderStroke(2.dp, Black), shape = RoundedCornerShape(10.dp))
+                            .background(Transparent)
+                            .clickable {  }
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.banana),
-                            contentDescription = null,
-                            modifier = Modifier.size(80.dp)
-                        )
-
-                    }
-                    Column(modifier = Modifier.padding(start = 5.dp)) {
-                        Text(
-                            text = "Organic Bananas",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp
-                        )
-                        Text(text = "7pcs, Price")
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Row {
-                        Text(text = "$4.99", Modifier.padding(start = 5.dp, top = 5.dp))
-                        Spacer(Modifier.width(65.dp))
-                        Button(
-                            onClick = { },
-                            modifier = Modifier.clip(
-                                RoundedCornerShape(10.dp)
-                            ), colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green)
+                        Column(
+                            modifier = Modifier
+                                .width(180.dp)
                         ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.vector_plus),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Image(
+                                    painter = painterResource(id = item.image),
+                                    contentDescription = "",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier
+                                        .size(120.dp)
+                                        .padding(10.dp)
+                                )
+                            }
+                            Column {
+                                Text(
+                                    text = item.name,
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Black,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                                Text(
+                                    text = item.price.toString(),
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Black,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                            }
+
 
                         }
 
@@ -191,59 +196,7 @@ fun HomeScreenUI() {
 
                 }
 
-                Spacer(modifier = Modifier.width(10.dp))
-
-                Column(
-                    modifier = Modifier
-
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Black),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Color.Transparent)
-                        .clickable {}
-                        .width(170.dp)) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.apple),
-                            contentDescription = null,
-                            modifier = Modifier.size(80.dp)
-                        )
-
-                    }
-                    Column(modifier = Modifier.padding(start = 5.dp)) {
-                        Text(text = "Red Apple", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                        Text(text = "1kg, Price")
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Row {
-                        Text(text = "$4.99", Modifier.padding(start = 5.dp, top = 5.dp))
-                        Spacer(Modifier.width(65.dp))
-                        Button(
-                            onClick = { },
-                            modifier = Modifier.clip(
-                                RoundedCornerShape(10.dp)
-                            ), colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green)
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.vector_plus),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-
-                        }
-
-                    }
-
-                }
             }
-
             Spacer(modifier = Modifier.height(30.dp))
 
             Row {
@@ -261,53 +214,54 @@ fun HomeScreenUI() {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            Row {
-                Column(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Black),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Color.Transparent)
-                        .clickable {}
-                        .width(170.dp)) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
+            LazyRow(contentPadding = PaddingValues(bottom = 50.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+
+            ) {
+                items(dataBestSelling) { item ->
+                    Card(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .border(BorderStroke(2.dp, Black), shape = RoundedCornerShape(10.dp))
+                            .background(Transparent)
+                            .clickable {  }
+
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.red_pepper),
-                            contentDescription = null,
-                            modifier = Modifier.size(80.dp)
-                        )
-
-                    }
-                    Column(modifier = Modifier.padding(start = 5.dp)) {
-                        Text(
-                            text = "Bell Pepper Red",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp
-                        )
-                        Text(text = "1kg, Price")
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Row {
-                        Text(text = "$4.99", Modifier.padding(start = 5.dp, top = 5.dp))
-                        Spacer(Modifier.width(65.dp))
-                        Button(
-                            onClick = { },
-                            modifier = Modifier.clip(
-                                RoundedCornerShape(10.dp)
-                            ), colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green)
+                        Column(
+                            modifier = Modifier
+                                .width(180.dp)
                         ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.vector_plus),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Image(
+                                    painter = painterResource(id = item.image),
+                                    contentDescription = "",
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier
+                                        .size(120.dp)
+                                        .padding(10.dp)
+                                )
+                            }
+                            Column {
+                                Text(
+                                    text = item.name,
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Black,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                                Text(
+                                    text = item.price.toString(),
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Black,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                            }
+
 
                         }
 
@@ -316,67 +270,19 @@ fun HomeScreenUI() {
 
                 }
 
-                Spacer(modifier = Modifier.width(10.dp))
-
-                Column(
-                    modifier = Modifier
-
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Black),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Color.Transparent)
-                        .clickable {}
-                        .width(170.dp)) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.ginger),
-                            contentDescription = null,
-                            modifier = Modifier.size(80.dp)
-                        )
-
-                    }
-                    Column(modifier = Modifier.padding(start = 5.dp)) {
-                        Text(text = "Ginger", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                        Text(text = "250gm, Price")
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Row {
-                        Text(text = "$4.99", Modifier.padding(start = 5.dp, top = 5.dp))
-                        Spacer(Modifier.width(65.dp))
-                        Button(
-                            onClick = { },
-                            modifier = Modifier.clip(
-                                RoundedCornerShape(10.dp)
-                            ), colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green)
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.vector_plus),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-
-                        }
-
-                    }
-
-                }
             }
+
         }
     }
-
 }
-
 
 
 @Preview
 @Composable
 fun Preview() {
     HomeScreenUI()
+
 }
+
+
+
