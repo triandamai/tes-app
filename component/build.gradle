@@ -31,6 +31,7 @@ dependencies {
     implementation Libs.AndroidX.LifeCycle.extensions
     implementation Libs.AndroidX.LifeCycle.livedataKtx
     implementation Libs.AndroidX.LifeCycle.runtimeKtx
+    implementation 'androidx.leanback:leanback:1.0.0'
     kapt Libs.AndroidX.LifeCycle.compiler
 
 
