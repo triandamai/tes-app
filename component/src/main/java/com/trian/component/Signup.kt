@@ -1,6 +1,7 @@
 package com.trian.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,7 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,7 +40,7 @@ fun Signup(navController: NavController) {
     val passwordVisibility = remember { mutableStateOf(false) }
     fun check() {
         if (username != "" && email != "" && password != "") {
-            navController.navigate("HomeScreenUI")
+            navController.navigate("Login")
         }
     }
 
@@ -158,15 +158,15 @@ fun Signup(navController: NavController) {
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        Column {
-            Text(text = buildAnnotatedString {
-                withStyle(style = SpanStyle(color = Color.Black)) {
-                    append("Already have an account?  ")
-                }
-                withStyle(style = SpanStyle(color = Color.Green)) {
-                    append("Sign up")
-                }
-            }, fontSize = 14.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+        Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
+            Text(text = "Already have an account?", fontSize = 14.sp)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "Login",
+                fontSize = 14.sp,
+                color = Color.Green,
+                modifier = Modifier.clickable { navController.navigate("Login") })
+
         }
     }
 

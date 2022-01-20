@@ -16,10 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ExperimentalAnimatedInsets
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.trian.component.Explore
-import com.trian.component.HomeScreenUI
-import com.trian.component.Login
-import com.trian.component.Signup
+import com.trian.component.*
 import com.trian.component.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,6 +59,22 @@ class MainActivity : ComponentActivity() {
                     composable("Homescreen"){
                         HomeScreenUI(navController = navController)
                     }
+                    composable(NavigationItem.Explore.route){
+                        Explore()
+                    }
+                    composable(NavigationItem.Home.route) {
+
+                    }
+                    composable(NavigationItem.Shop.route){
+
+                    }
+                    composable(NavigationItem.Cart.route){
+
+                    }
+                    composable(NavigationItem.Account.route){
+
+                    }
+
 
                 }
             }

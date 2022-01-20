@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 @Composable
@@ -57,7 +57,9 @@ fun HomeScreenUI(navController: NavController) {
                     unselectedContentColor = Color.White.copy(0.4f),
                     alwaysShowLabel = true,
                     selected = false,
-                    onClick = { })
+                    onClick = {
+                        navController.navigate(item.route)
+                    })
 
 
             }
@@ -217,7 +219,8 @@ fun HomeScreenUI(navController: NavController) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            LazyRow(contentPadding = PaddingValues(bottom = 50.dp),
+            LazyRow(
+                contentPadding = PaddingValues(bottom = 50.dp),
                 modifier = Modifier
                     .fillMaxSize()
 
