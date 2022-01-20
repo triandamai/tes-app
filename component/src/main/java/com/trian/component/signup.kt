@@ -11,31 +11,38 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Signup() {
+fun Signup(navController: NavController) {
     var username by remember {
-        mutableStateOf("Afsar Hossen Shuvo")
+        mutableStateOf("")
     }
     var email by remember {
-        mutableStateOf("imshuvo97@gmail.com")
+        mutableStateOf("")
     }
     var password by rememberSaveable {
-        mutableStateOf("jangan panggil aku anak kecil paman")
+        mutableStateOf("")
     }
-
+    val passwordVisibility = remember { mutableStateOf(false) }
+    fun check() {
+        if (username != "" && email != "" && password != "") {
+            navController.navigate("HomeScreenUI")
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -63,7 +70,7 @@ fun Signup() {
         Spacer(Modifier.height(30.dp))
 
         Column {
-            TextField(
+            OutlinedTextField(
                 value = username,
                 onValueChange = { username = it },
                 label = { Text("Username") },
@@ -77,16 +84,8 @@ fun Signup() {
         Spacer(Modifier.height(30.dp))
 
         Column {
-            TextField(
+            OutlinedTextField(
                 value = email,
-                trailingIcon = {
-                    Image(
-                        painter = painterResource(R.drawable.check),
-                        contentDescription = null,
-                        colorFilter = ColorFilter.tint(Color.Green),
-                        modifier = Modifier.size(30.dp)
-                    )
-                },
                 onValueChange = { email = it },
                 label = { Text("Email") },
                 colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
@@ -99,18 +98,22 @@ fun Signup() {
         Spacer(Modifier.height(30.dp))
 
         Column {
-            TextField(
+            OutlinedTextField(
                 value = password,
                 trailingIcon = {
-                    Image(
-                        painter = painterResource(R.drawable.eyes),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    IconButton(onClick = { passwordVisibility.value = !passwordVisibility.value }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.eye),
+                            contentDescription = null,
+                            tint = if (passwordVisibility.value) Color.Blue else Color.Gray,
+                            modifier = Modifier.size(20.dp)
+                        )
+
+                    }
                 },
                 onValueChange = { password = it },
                 label = { Text("Password") },
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = if (passwordVisibility.value) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
                 modifier = Modifier
@@ -143,7 +146,7 @@ fun Signup() {
 
         Column {
             Button(
-                onClick = {},
+                onClick = { check() },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -174,5 +177,5 @@ fun Signup() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSignUp() {
-    Signup()
+    Signup(navController = rememberNavController())
 }
