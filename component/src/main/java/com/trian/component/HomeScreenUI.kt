@@ -21,9 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HomeScreenUI() {
+fun HomeScreenUI(navController: NavController) {
     var search by remember {
         mutableStateOf("")
     }
@@ -152,7 +155,7 @@ fun HomeScreenUI() {
                             .padding(10.dp)
                             .border(BorderStroke(2.dp, Black), shape = RoundedCornerShape(10.dp))
                             .background(Transparent)
-                            .clickable {  }
+                            .clickable { }
                     ) {
                         Column(
                             modifier = Modifier
@@ -225,7 +228,7 @@ fun HomeScreenUI() {
                             .padding(10.dp)
                             .border(BorderStroke(2.dp, Black), shape = RoundedCornerShape(10.dp))
                             .background(Transparent)
-                            .clickable {  }
+                            .clickable { }
 
                     ) {
                         Column(
@@ -280,7 +283,7 @@ fun HomeScreenUI() {
 @Preview
 @Composable
 fun Preview() {
-    HomeScreenUI()
+    HomeScreenUI(navController = rememberNavController())
 
 }
 
