@@ -2,13 +2,15 @@ package com.trian.component
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -16,16 +18,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navDeepLink
 import com.trian.component.ui.theme.*
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Explore(navController: NavController) {
+fun Explore() {
     var value by remember { mutableStateOf("") }
     val items = listOf(
         NavigationItem.Home,
+        NavigationItem.Shop,
+        NavigationItem.Cart,
+        NavigationItem.Account
+
     )
     Scaffold(
         bottomBar = {
@@ -35,8 +39,14 @@ fun Explore(navController: NavController) {
             ) {
                 items.forEach { item ->
                     BottomNavigationItem(
-                        icon = { Icon(painterResource(R.drawable.vector__3_), contentDescription =null, modifier = Modifier.size(20.dp)) },
-                        label = { Text(text = "Cart") },
+                        icon = {
+                            Icon(
+                                painterResource(item.icon),
+                                contentDescription = item.title,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        label = { Text(text = item.title) },
                         selectedContentColor = Color.Black,
                         unselectedContentColor = Color.Black.copy(0.4f),
                         alwaysShowLabel = true,
@@ -45,7 +55,9 @@ fun Explore(navController: NavController) {
                             /* Add code later */
                         }
                     )
-                }}}
+                }
+            }
+        }
     ) {
 
         Column(
@@ -80,143 +92,67 @@ fun Explore(navController: NavController) {
                 )
 
             }
-            Spacer(modifier = Modifier.height(20.dp))
-            Row() {
-                Column(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Limegreen),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Limegreen.copy(alpha = 0.5f))
-                        .clickable {
 
-                        }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pngfuel_6),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Fresh Fruits", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    Text(text = "& Vegetable", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            LazyColumn(
+                contentPadding = PaddingValues(8.dp)
+            )
+            {
+
+                gridItems(count = dataExplore.size, columnCount = 2) { index ->
+                    Card(
+                        modifier = Modifier
+                            .height(230.dp)
+                            .width(200.dp)
+                            .padding(4.dp)
+                            .border(BorderStroke(5.dp, Lightblue), RoundedCornerShape(10.dp))
+                            .clickable {  },
+                        backgroundColor = Color.Transparent
+
+                    ) {
+                        Column() {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Image(
+                                    painter = painterResource(id = dataExplore[index].image),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(100.dp)
+
+                                )
+                            }
+                            Text(
+                                text = dataExplore[index].name,
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                            Text(
+                                text = dataExplore[index].price.toString(),
+                                fontSize = 12.sp,
+                                modifier = Modifier.padding(10.dp)
+                            )
+
+                        }
+
+                    }
                 }
-                Spacer(modifier = Modifier.width(84.dp))
-                Column(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(15.dp))
-                        .border(
-                            border = BorderStroke(3.dp, Cyanorange),
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .background(Cyanorange.copy(alpha = 0.5f))
-                        .clickable {
-
-                        }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.group_6835),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Cooking oil", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    Text(text = "& Ghee", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                item {
+                    Spacer(modifier = Modifier.height(50.dp))
                 }
-
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-            Row() {
-                Column(modifier = Modifier
-                    .clip(RoundedCornerShape(15.dp))
-                    .border(
-                        border = BorderStroke(3.dp, Lightorange),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .background(Lightorange.copy(alpha = 0.5f))
-                    .clickable {
-
-                    }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pngfuel_9),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Meat & Fish", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-
-                }
-                Spacer(modifier = Modifier.width(84.dp))
-                Column(modifier = Modifier
-                    .clip(RoundedCornerShape(15.dp))
-                    .border(
-                        border = BorderStroke(3.dp, Lightpurple),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .background(Lightpurple.copy(alpha = 0.5f))
-                    .clickable {
-
-                    }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pngfuel_6__1_),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Bakery & Snacks", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-
-                }
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-            Row() {
-                Column(modifier = Modifier
-                    .clip(RoundedCornerShape(15.dp))
-                    .border(
-                        border = BorderStroke(3.dp, Lightyellow),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .background(Lightyellow.copy(alpha = 0.5f))
-                    .clickable {
-
-                    }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pngfuel),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Dairy & Eggs", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-
-                }
-                Spacer(modifier = Modifier.width(84.dp))
-                Column(modifier = Modifier
-                    .clip(RoundedCornerShape(15.dp))
-                    .border(
-                        border = BorderStroke(3.dp, Lightblue),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .background(Lightblue.copy(alpha = 0.5f))
-                    .clickable {
-
-                    }, horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pngfuel_6__3_),
-                        contentDescription = null,
-                        Modifier.size(135.dp)
-                    )
-                    Text(text = "Beverages", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-
-                }
-
             }
 
         }
+
     }
+
 }
 
+
+@OptIn(ExperimentalFoundationApi::class)
 @Preview(showBackground = true)
 @Composable
 fun PreviewExplore() {
-    Explore(navController = rememberNavController())
+    Explore()
 }

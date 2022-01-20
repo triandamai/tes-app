@@ -25,7 +25,7 @@ import com.trian.component.ui.theme.TesMultiModuleTheme
 
 @Composable
 fun Login(navController: NavController) {
-    var email by remember { mutableStateOf("imsimsimsi@gmail.com") }
+    var email by remember { mutableStateOf("admin@gmail.com") }
     var password by rememberSaveable { mutableStateOf("admin") }
 
     fun checklogin() {
@@ -113,7 +113,7 @@ fun Login(navController: NavController) {
             Spacer(modifier = Modifier.height(80.dp))
             Column( horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(onClick = {
-                    checklogin()
+                   checklogin()
                 }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green), modifier = Modifier.fillMaxWidth()) {
                     Text(text = "login", color = Color.White)
                     
